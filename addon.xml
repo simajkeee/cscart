@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>sd_staff_management</id> <!--  равен названию папки модуля  -->
+    <name>Модуль управления персоналом</name> <!--  название модуля в панели администратора  -->
+    <description>Создание модуля управления персоналом</description>
+    <status>active</status>
+    <default_language>ru</default_language>
+    <status>active</status>
+    <queries>
+        <item for="install">DROP TABLE IF EXISTS ?:staff_data;</item>
+        <item for="install">
+            CREATE TABLE `?:staff_data` (
+            `user_id` int(11) unsigned NOT NULL DEFAULT 0,
+            `first_name` text NOT NULL DEFAULT '',
+            `last_name` text NOT NULL DEFAULT '',
+            `function_title` text NOT NULL DEFAULT '',
+            `email` text NOT NULL DEFAULT '',
+            `description` text NOT NULL DEFAULT '',
+            `pos` text NOT NULL DEFAULT '',
+            PRIMARY KEY (`user_id`)
+            ) Engine=MyISAM DEFAULT CHARSET UTF8;
+        </item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:staff_data;</item>
+    </queries>
+</addon>
